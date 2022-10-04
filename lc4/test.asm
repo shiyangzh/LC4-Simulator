@@ -1,0 +1,59 @@
+.CODE
+.ADDR 0x0000
+
+MAIN
+    CONST R0 #39
+    JMPR R0
+    BRzp L1
+    BRz L1
+    BRp L1
+    CONST R1 #10
+    BRn L1
+    BRnz L1
+    BRz L1
+    BRnzp L1
+    CMP R0 R1
+    CMP R1 R0
+    CMPU R0 R1
+    CMPU R1 R0
+    CMPI R0 #2
+    CMPI R1 #-15
+    CMPIU R0 20
+    CMPIU R1 10
+
+    CONST R5 x20
+    HICONST R5 x20
+    SLL R0 R0 #5
+    SRA R0 R0 #5
+    SRL R0 R0 #5
+    CONST R0 #5
+    CONST R1 #4
+    CONST R2 #2
+    MOD R1 R1 R2
+    MOD R0 R0 R2
+    JMP L1
+    AND R2 R1 R0
+    AND R2 R0 R1
+    NOT R2 R1
+    NOT R2 R0
+    OR R2 R1 R0
+    OR R2 R0 R1
+    XOR R2 R1 R0
+    XOR R2 R0 R1
+    AND R2 R1 #5
+    AND R2 R1 #-5
+L1 
+END
+TRAP xFF		; HALT
+
+.OS
+.CODE
+
+.ADDR x80FF
+HALT
+	NOP
+
+.ADDR x8200
+.FALIGN
+CONST R7, #0
+RTI

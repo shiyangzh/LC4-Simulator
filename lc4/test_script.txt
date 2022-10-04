@@ -1,0 +1,8 @@
+reset
+clear
+as test test
+ld test
+break set HALT
+trace on test.txt
+continue
+trace off
